@@ -1,5 +1,5 @@
 # Problem Sea
-The collections of coding problem from
+The collections of coding problem solutions， problems from
 
 [Codeforces](https://codeforces.com/)
 
