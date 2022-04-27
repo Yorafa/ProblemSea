@@ -5,14 +5,14 @@ typedef long long ll;
 int arr[1025][1025] = {{0}};
 
 void f(int r, int c, int rl, int cl){
-    if (r >= rl || c >= cl) return;
-    for (int i = r; i < rl/2; i++){
-        for (int j = c; j < cl/2; j++)
+    if (r + 1 >= rl || c + 1>= cl) return;
+    for (int i = r; i < (rl-r)/2 + r; i++){
+        for (int j = c; j < (cl - c)/2 + c; j++)
             arr[i][j] = 1;        
     }
-    f(r + rl/2, c + cl/2, rl, cl);
-    f(r, c + cl/2, rl/2, cl);
-    f(r+rl/2, c, rl, cl/2);
+    f(r + (rl-r)/2, c + (cl - c)/2, rl, cl);
+    f(r, c + (cl - c)/2, (rl -r)/2 +r, cl);
+    f(r+ (rl - r)/2, c, rl, (cl - c)/2 +c);
 }
 
 int main(){
