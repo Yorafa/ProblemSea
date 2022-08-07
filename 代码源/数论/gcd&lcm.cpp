@@ -11,7 +11,6 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef vector<string> vs;
-typedef pair<int,int> pii;
 
 ll gcd(ll a, ll b){
     if (b == 0) return a;
@@ -23,7 +22,9 @@ ll lcm(ll a, ll b){
 }
 
 void solve(){
-    
+    int a, b;
+    cin >> a >> b;
+    coe(gcd(a,b) << " " << lcm(a, b));
 }
 
 int main(){

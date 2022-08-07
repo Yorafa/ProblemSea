@@ -11,7 +11,6 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef vector<string> vs;
-typedef pair<int,int> pii;
 
 ll gcd(ll a, ll b){
     if (b == 0) return a;
@@ -22,8 +21,30 @@ ll lcm(ll a, ll b){
     return a*b/gcd(a,b);
 }
 
+ll exgcd(ll a, ll b, ll &x, ll &y){
+    if (b == 0){
+        x = 1;
+        y = 0;
+        return a;
+    }
+    ll xp, yp;
+    ll d = exgcd(b, a%b, xp, yp);
+    x = yp;
+    y = xp - a/b * yp;
+    return d;
+}
+
 void solve(){
-    
+    ll a, b, x, y;
+    cin >> a >> b;
+    ll d = exgcd(a, b, x, y);
+    // since we solve for ax + by = gcd(a,b), we should do y into -y
+    y = -y;
+    if (x < 0 || y < 0){
+        x += b/d;
+        y += a/d;
+    }
+    coe(x << " " << y);
 }
 
 int main(){
