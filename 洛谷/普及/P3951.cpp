@@ -7,7 +7,6 @@
 #define coe(x) cout << x << endl
 
 using namespace std;
-typedef unsigned int uint;
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
@@ -28,8 +27,12 @@ void solve(){
 }
 
 int main(){
-    int n;
-    cin >> n;
-    while (n--) solve();
+    ll a,b;
+    cin >> a >> b;
+    // since ax + by = k we can get k \equiv ax (mod b)
+    // since ax \in [1, b-1], then x \in [1, b-1] due to a >= 1 lese x %= b still in [1, b-1]
+    // since x > 0, then y = -1 is the maximum solution
+    // then ax - b = k \implies x pick b - 1 to make the k maximum
+    coe(a*(b-1) - b);
     return 0;
 }

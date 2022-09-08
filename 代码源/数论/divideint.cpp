@@ -4,32 +4,23 @@
 #define all(x) x.begin(), x.end()
 #define lb lower_bound
 #define ub upper_bound
-#define coe(x) cout << x << endl
+#define coe(x) cout << x << endl;
 
 using namespace std;
-typedef unsigned int uint;
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef vector<string> vs;
-typedef pair<int,int> pii;
+typedef unsigned long long ull;
 
-ll gcd(ll a, ll b){
-    if (b == 0) return a;
-    return gcd(b, a%b);
-}
-
-ll lcm(ll a, ll b){
-    return a*b/gcd(a,b);
-}
-
-void solve(){
-    
-}
-
-int main(){
-    int n;
+int main() {
+    ull mod = 1ull << 60, sum = 0, n;
     cin >> n;
-    while (n--) solve();
+    for (ull l = 1; l <= n; l++){
+        ll d = n/l, r = n/d;
+        sum += ((r-l+1)*(n-r*d + n-l*d)/2);
+        l = r;
+    }
+    coe(sum % mod);
     return 0;
 }

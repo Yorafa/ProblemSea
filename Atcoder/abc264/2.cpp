@@ -7,29 +7,28 @@
 #define coe(x) cout << x << endl
 
 using namespace std;
-typedef unsigned int uint;
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef vector<string> vs;
-typedef pair<int,int> pii;
 
-ll gcd(ll a, ll b){
-    if (b == 0) return a;
-    return gcd(b, a%b);
-}
-
-ll lcm(ll a, ll b){
-    return a*b/gcd(a,b);
-}
 
 void solve(){
     
 }
 
 int main(){
-    int n;
-    cin >> n;
-    while (n--) solve();
+    int r, c;
+    cin >> r >> c;
+    int a[16][16] = {0};
+    for (int i = 1; i < 8; i+=2){
+        for (int j= i; j <= 16-i; j++){
+            a[i][j] = 1;
+            a[j][i] = 1;
+        }
+    }
+    for (int i = 15; i > 8; i-=2) for (int j= 16 - i; j <= i; j++){ a[i][j] = 1; a[j][i] = 1;}
+    if (a[r][c]) coe("black");
+    else coe("white");
     return 0;
 }

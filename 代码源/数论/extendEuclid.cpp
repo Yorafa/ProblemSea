@@ -29,6 +29,8 @@ ll exgcd(ll a, ll b, ll &x, ll &y){
     }
     ll xp, yp;
     ll d = exgcd(b, a%b, xp, yp);
+    // ax + by => b(kx + y) + a%bx where we final get y' = x = 1
+    // then we can have x' = kx + y and y = x'-kx
     x = yp;
     y = xp - a/b * yp;
     return d;
@@ -40,10 +42,11 @@ void solve(){
     ll d = exgcd(a, b, x, y);
     // since we solve for ax + by = gcd(a,b), we should do y into -y
     y = -y;
-    if (x < 0 || y < 0){
+    while (x < 0 || y < 0){
         x += b/d;
         y += a/d;
-    }
+    }// add up utill non-negative where a(x + b/d) - b(y + a/d) = ax + ab/d - by - ab/d = ax - by
+    // therefore we can add both x + b/d and y + a/d infinitely untill two of them are both positive
     coe(x << " " << y);
 }
 

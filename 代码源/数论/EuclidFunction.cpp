@@ -4,15 +4,13 @@
 #define all(x) x.begin(), x.end()
 #define lb lower_bound
 #define ub upper_bound
-#define coe(x) cout << x << endl
+#define coe(x) cout << x << endl;
 
 using namespace std;
-typedef unsigned int uint;
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef vector<string> vs;
-typedef pair<int,int> pii;
 
 ll gcd(ll a, ll b){
     if (b == 0) return a;
@@ -24,7 +22,20 @@ ll lcm(ll a, ll b){
 }
 
 void solve(){
-    
+    int a;
+    cin >> a;
+    int phi = a;
+    for (int b = 2; b*b <= a; b++){
+        if (a % b == 0){
+            phi = phi/b*(b-1); // since a%b ==0 so that phi%b == 0
+            // since less than sqrt(a)
+            while(a % b == 0) a/=b;
+        }
+    }
+    if (a != 1){
+        phi = phi/a*(a-1);
+    }
+    coe(phi);
 }
 
 int main(){

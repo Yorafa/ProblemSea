@@ -11,6 +11,7 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef vector<string> vs;
+typedef unsigned long long ull;
 
 ll gcd(ll a, ll b){
     if (b == 0) return a;
@@ -38,25 +39,41 @@ ll exgcd(ll a, ll b, ll &x, ll &y){
     return d;
 }
 
+ll fd(ll a, ll b){
+    if (a%b == 0) return a/b;
+    else if (a>0) return a/b;
+    else return a/b - 1;
+}
+
+
+ll cd(ll a, ll b){
+    if (a%b == 0) return a/b;
+    else if (a>0) return a/b+1;
+    else return a/b;
+}
+
 void solve(){
     ll a, b, c, x, y;
-    cin >> a >> b >> c;
-    ll d = exgcd(a, b,x,y);
+    ll l1,r1,l2,r2;
+    cin >> a >> b >> c >> l1 >> r1 >> l2 >> r2;
+    ll d = exgcd(a,b,x,y);
     // since we solve for ax + by = gcd(a,b) = d
     // we want it to be ax + by = c
-    if ((c%d) != 0){
-        coe(-1);
+    if (c%d != 0){
+        coe(0);
         return;
     }
     a/=d; b/= d; c/=d;
-    ll xx = (ll)x * (c%b) %b;
-    if (xx < 0) xx+=b;
+    ll xx = (ll)x * (c%b) % b;
+    if (xx < 0) xx += b;
     ll yy = (c-a*xx)/b;
-    if (yy < 0){
-        coe(-1);
+    // l1 <= xx + bt <= r1; l2 <= yy - at <= r2
+    ll t1  = max(cd(l1-xx, b), cd(yy-r2,a)), t2 = min(fd(r1-xx, b), fd(yy - l2,a));
+    if (t1 > t2){
+        coe(0);
         return;
     }
-    coe(xx << " " << yy);
+    coe(t2 - t1 + 1);
 }
 
 int main(){

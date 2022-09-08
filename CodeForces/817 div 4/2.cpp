@@ -24,7 +24,26 @@ ll lcm(ll a, ll b){
 }
 
 void solve(){
-    
+    int n;
+    string a,b;
+    cin >> n >> a >> b;
+    for (int i = 0; i < n; i++){
+        if (a[i] != b[i]){
+            if (a[i] != 'G' && a[i] != 'B'){
+                coe("No");
+                return;
+            }
+            if (a[i] == 'G' && b[i] != 'B'){
+                coe("No");
+                return;
+            }
+            if (a[i] == 'B' && b[i] != 'G'){
+                coe("No");
+                return;
+            }
+        }
+    }
+    coe("Yes");
 }
 
 int main(){
