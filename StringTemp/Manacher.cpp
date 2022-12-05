@@ -31,13 +31,13 @@ ll lcm(ll a, ll b){
 void manacher(){
     string a, ap;
     cin >> a;
-    ap+= '$';
+    ap+= '$'; // insert $ to make full string length go even
     P[0] = 1;
     for (char c : a){
         ap += c;
-        ap += '$';
+        ap += '$'; // same as above
     }
-    int M = 0, R = 0;
+    int M = 0, R = 0; // the interval maintain to keep track
     for (ll i = 0; i < ap.size(); i++){
         if (i > R) P[i] = 1;
         else P[i] = min(P[2*M - i], R - i + 1);
