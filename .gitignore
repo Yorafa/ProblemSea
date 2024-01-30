@@ -1,3 +1,5 @@
 # ignore vscode files and all executables
 .vscode/
 *.exe
+.cph
+*.bin
